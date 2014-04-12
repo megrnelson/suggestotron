@@ -1,11 +1,16 @@
 Suggestotron::Application.routes.draw do
-  root 'topics#index'
-
+  resources :pages
   resources :topics do
     member do
       post 'upvote'
+      post 'downvote'
     end
   end
+
+  root 'topics#index' 
+
+  match '/about',    to: 'pages#about',    via: 'get'
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
